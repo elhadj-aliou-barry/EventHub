@@ -16,7 +16,7 @@
 
 - [À propos](#-à-propos)
 - [Fonctionnalités](#-fonctionnalités)
-- [Architecture de la base de données](#-architecture-de-la-base-de-données)
+- [Architecture de la base de données](#%EF%B8%8F-architecture-de-la-base-de-données)
 - [Installation](#-installation)
 - [Utilisation](#-utilisation)
 - [Structure du projet](#-structure-du-projet)
@@ -202,12 +202,14 @@ Suit les transactions de paiement.
 
 5. **Créer les procédures de réservation**
    ```bash
-   mysql -u votre_utilisateur -p EventHub < "Reserver de place(s) /Réservation-Procédures-finales"
+   mysql -u votre_utilisateur -p EventHub < "Reserver de place(s) /fonctions_reservation_simple.sql"
+   mysql -u votre_utilisateur -p EventHub < "Reserver de place(s) /fonctions pour reservers +sieurs places.sql"
    ```
 
 6. **Créer les procédures d'annulation**
    ```bash
-   mysql -u votre_utilisateur -p EventHub < "Annuler réservation(s)/Annulation-Procédures_finales"
+   mysql -u votre_utilisateur -p EventHub < "Annuler réservation(s)/fonctions_annuler_reservation.sql"
+   mysql -u votre_utilisateur -p EventHub < "Annuler réservation(s)/Fonctions annulations +sieurs places.sql"
    ```
 
 7. **Créer les vues et procédures statistiques**
@@ -246,12 +248,16 @@ EventHub/
 │   └── Triggers de cohérence.sql      # Triggers d'intégrité
 │
 ├── Reserver de place(s) /             # Module de réservation
-│   ├── Réservation-Procédures-finales # Procédures finales
+│   ├── Réservation-Procédures-finales/
+│   │   ├── Reserver une place.sql
+│   │   └── Reserver +sieurs places.sql
 │   ├── fonctions_reservation_simple.sql
 │   └── fonctions pour reservers +sieurs places.sql
 │
 ├── Annuler réservation(s)/            # Module d'annulation
-│   ├── Annulation-Procédures_finales  # Procédures finales
+│   ├── Annulation-Procédures_finales/
+│   │   ├── Annuler la reservation d'une place.sql
+│   │   └── Annuler une réservation de +sieurs places.sql
 │   ├── fonctions_annuler_reservation.sql
 │   └── Fonctions annulations +sieurs places.sql
 │
@@ -406,7 +412,7 @@ Les contributions sont les bienvenues ! Pour contribuer :
 
 1. **Fork** le projet
 2. Créez une **branche** pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. **Committez** vos changements (`git commit -m 'Add some AmazingFeature'`)
+3. **Commitez** vos changements (`git commit -m 'Add some AmazingFeature'`)
 4. **Push** vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrez une **Pull Request**
 
